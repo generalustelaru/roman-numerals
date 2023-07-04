@@ -69,7 +69,7 @@ function getHelpText() {
 
 function getPrompt(showIntro = true) {
     const prompt = ': '
-    const introText = `\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n type \x1b[93mh\x1b[0m for help.\n\n${prompt}`
+    const introText = `\n\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n    --Enterprise Edition--\n\n TIP: type \x1b[93mh\x1b[0m for help.\n\n${prompt}`
 
     if (showIntro) {
 

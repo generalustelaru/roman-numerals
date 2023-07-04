@@ -25,14 +25,14 @@ function getConvertedValue(input) {
     const toDecimalResult = romanToDecimal(input)
     const toRomanResult = decimalToRoman(input)
 
-    if (toDecimalResult !== VALUE_ERROR && toDecimalResult !== RANGE_ERROR) {
-
-        return toDecimalResult
-    }
-
     if (toRomanResult !== VALUE_ERROR && toRomanResult !== RANGE_ERROR) {
 
         return toRomanResult
+    }
+
+    if (toDecimalResult !== VALUE_ERROR && toDecimalResult !== RANGE_ERROR) {
+
+        return toDecimalResult
     }
 
     if (toDecimalResult === RANGE_ERROR || toRomanResult === RANGE_ERROR) {
@@ -113,7 +113,7 @@ function decimalToRoman(input) {
     let numeralString = ''
     NUMERALS.forEach(NUMERAL => {
     
-        if(NUMERAL.isPowerOfTen) {
+        if (NUMERAL.isPowerOfTen) {
             const frontDigit = Math.floor(reduceable / NUMERAL.value)
             const TRANSLATION = translateDigit(frontDigit, NUMERAL)
             reduceable -= TRANSLATION.value
@@ -131,7 +131,7 @@ function translateDigit (digit, NUMERAL) {
 
         if (digit === DIGIT.digits) {
             const repeatedNumeral = repeatNumeral(NUMERAL.numeral, DIGIT.repetitions)
-            TRANSLATION.numerals = composeNumerals(NUMERAL.helperNumerals, repeatedNumeral, DIGIT.helperNumeral)
+            TRANSLATION.numerals = composeNumerals(NUMERAL, repeatedNumeral, DIGIT)
         }
     })
     TRANSLATION.value = digit * NUMERAL.value
@@ -140,14 +140,14 @@ function translateDigit (digit, NUMERAL) {
 }
 
 
-function composeNumerals (helperNumerals, repeatedNumeral, HELPER_NUMERAL) {
+function composeNumerals (NUMERAL, repeatedNumeral, DIGIT) {
 
     let composedNumerals = ''
 
-    if (HELPER_NUMERAL) {
-        const selectedHelperNumeral = helperNumerals[HELPER_NUMERAL.type].numeral
+    if (DIGIT.helperNumeral) {
+        const selectedHelperNumeral = NUMERAL.helperNumerals[DIGIT.helperNumeral.type].numeral
 
-        if (HELPER_NUMERAL.isBefore) {
+        if (DIGIT.helperNumeral.isBefore) {
             composedNumerals += selectedHelperNumeral + repeatedNumeral
 
         } else {
