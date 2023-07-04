@@ -126,28 +126,38 @@ function decimalToRoman(input) {
 
 function translateDigit (digit, NUMERAL) {
 
-    const TRANSLATION = {numerals: '', value: 0}
+    const TRANSLATION = { numerals: '', value: 0 }
     DIGITS.forEach(DIGIT => {
 
         if (digit === DIGIT.digits) {
             const repeatedNumeral = repeatNumeral(NUMERAL.numeral, DIGIT.repetitions)
-    
-            if (DIGIT.helperNumeral) {
-                const helperNumeral = NUMERAL.helperNumerals[DIGIT.helperNumeral.type].numeral
-
-                if (DIGIT.helperNumeral.isBefore) {
-                    TRANSLATION.numerals += helperNumeral + repeatedNumeral
-                } else {
-                    TRANSLATION.numerals += repeatedNumeral + helperNumeral
-                }
-            } else {
-                TRANSLATION.numerals += repeatedNumeral
-            }
+            TRANSLATION.numerals = composeNumerals(NUMERAL.helperNumerals, repeatedNumeral, DIGIT.helperNumeral)
         }
     })
     TRANSLATION.value = digit * NUMERAL.value
 
     return TRANSLATION
+}
+
+
+function composeNumerals (helperNumerals, repeatedNumeral, HELPER_NUMERAL) {
+
+    let composedNumerals = ''
+
+    if (HELPER_NUMERAL) {
+        const selectedHelperNumeral = helperNumerals[HELPER_NUMERAL.type].numeral
+
+        if (HELPER_NUMERAL.isBefore) {
+            composedNumerals += selectedHelperNumeral + repeatedNumeral
+
+        } else {
+            composedNumerals += repeatedNumeral + selectedHelperNumeral
+        }
+    } else {
+        composedNumerals += repeatedNumeral
+    }
+
+    return composedNumerals
 }
 
 /**
