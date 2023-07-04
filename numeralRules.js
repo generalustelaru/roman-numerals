@@ -1,0 +1,127 @@
+
+/**
+ * Array of objects containing the Roman Numeral, its decimal value, and the helper numerals, if any.
+ */
+const NUMERALS = [
+    {
+        numeral: 'M',
+        value: 1000,
+        isPowerOfTen: true,
+        helperNumerals: null
+    },
+    {
+        numeral: 'D',
+        value: 500,
+        isPowerOfTen: false,
+        helperNumerals: null
+    },
+    {
+        numeral: 'C',
+        value: 100,
+        isPowerOfTen: true,
+        helperNumerals: 
+        {
+            five: { numeral: 'D', multiplier: 4 },
+            ten: { numeral: 'M', multiplier: 9 }
+        }
+    },
+    {
+        numeral: 'L',
+        value: 50,
+        isPowerOfTen: false,
+        helperNumerals: null
+    },
+    {
+        numeral: 'X',
+        value: 10,
+        isPowerOfTen: true,
+        helperNumerals:
+        {
+            five: { numeral: 'L', multiplier: 4 },
+            ten: { numeral: 'C', multiplier: 9 }
+        }
+    },
+    {
+        numeral: 'V',
+        value: 5,
+        isPowerOfTen: false,
+        helperNumerals: null
+    },
+    {
+        numeral: 'I',
+        value: 1,
+        isPowerOfTen: true,
+        helperNumerals:
+        {
+            five: { numeral: 'V', multiplier: 4 },
+            ten: { numeral: 'X', multiplier: 9 }
+        }
+    },
+]
+
+function getNumerals() {
+
+    return NUMERALS
+}
+
+/**
+ * Array of objects containing the number of units, how many times they're repeated in the Roman Numeral system,
+ * their associated helper numeral, and if it's placed before or after the current numeral.
+ */
+const DIGITS = [
+    {
+        digits: 1,
+        repetitions: 1,
+        helperNumeral: null
+    },
+    {
+        digits: 2,
+        repetitions: 2,
+        helperNumeral: null
+    },
+    {
+        digits: 3,
+        repetitions: 3,
+        helperNumeral: null
+    },
+    {
+        digits: 4,
+        repetitions: 1,
+        helperNumeral: { type: 'five', isBefore: false }
+    },
+    {
+        digits: 5,
+        repetitions: 0,
+        helperNumeral: { type: 'five', isBefore: true }
+    },
+    {
+        digits: 6,
+        repetitions: 1,
+        helperNumeral: { type: 'five', isBefore: true }
+    },
+    {
+        digits: 7,
+        repetitions: 2,
+        helperNumeral: { type: 'five', isBefore: true }
+    },
+    {
+        digits: 8,
+        repetitions: 3,
+        helperNumeral: { type: 'five', isBefore: true }
+    },
+    {
+        digits: 9,
+        repetitions: 1,
+        helperNumeral: { type: 'ten', isBefore: false }
+    },
+]
+
+function getDigits() {
+
+    return DIGITS
+}
+
+module.exports = {
+    getDigits: getDigits,
+    getNumerals: getNumerals,
+}
