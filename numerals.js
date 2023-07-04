@@ -114,31 +114,40 @@ function decimalToRoman(input) {
     NUMERALS.forEach(NUMERAL => {
     
         if(NUMERAL.isPowerOfTen) {
-            const frontDigits = Math.floor(reduceable / NUMERAL.value)
-            DIGITS.forEach(DIGIT => {
-
-                if (frontDigits === DIGIT.digits) {
-                    const repeatedNumeral = repeatNumeral(NUMERAL.numeral, DIGIT.repetitions)
-
-                    if (DIGIT.helperNumeral) {
-                        const helperNumeral = NUMERAL.helperNumerals[DIGIT.helperNumeral.type].numeral
-
-                        if (DIGIT.helperNumeral.isBefore) {
-                            numeralString += helperNumeral + repeatedNumeral
-
-                        } else {
-                            numeralString += repeatedNumeral + helperNumeral
-                        }
-                    } else {
-                        numeralString += repeatedNumeral
-                    }
-                }
-            })
-            reduceable -= frontDigits * NUMERAL.value
+            const frontDigit = Math.floor(reduceable / NUMERAL.value)
+            const TRANSLATION = translateDigit(frontDigit, NUMERAL)
+            reduceable -= TRANSLATION.value
+            numeralString += TRANSLATION.numerals
         }
     })
 
     return numeralString
+}
+
+function translateDigit (digit, NUMERAL) {
+
+    const TRANSLATION = {numerals: '', value: 0}
+    DIGITS.forEach(DIGIT => {
+
+        if (digit === DIGIT.digits) {
+            const repeatedNumeral = repeatNumeral(NUMERAL.numeral, DIGIT.repetitions)
+    
+            if (DIGIT.helperNumeral) {
+                const helperNumeral = NUMERAL.helperNumerals[DIGIT.helperNumeral.type].numeral
+
+                if (DIGIT.helperNumeral.isBefore) {
+                    TRANSLATION.numerals += helperNumeral + repeatedNumeral
+                } else {
+                    TRANSLATION.numerals += repeatedNumeral + helperNumeral
+                }
+            } else {
+                TRANSLATION.numerals += repeatedNumeral
+            }
+        }
+    })
+    TRANSLATION.value = digit * NUMERAL.value
+
+    return TRANSLATION
 }
 
 /**
@@ -149,7 +158,7 @@ function decimalToRoman(input) {
  */
 function translateNumeral (numeral, nextNumeral) {
 
-    const translation = {value: null, isSuffixed: false}
+    const TRANSLATION = {value: null, isSuffixed: false}
 
     NUMERALS.forEach(NUMERAL => {
 
@@ -158,18 +167,18 @@ function translateNumeral (numeral, nextNumeral) {
             for (const type in NUMERAL.helperNumerals) {
 
                 if (NUMERAL.helperNumerals[type].numeral === nextNumeral) {
-                    translation.value = NUMERAL.value * NUMERAL.helperNumerals[type].multiplier
-                    translation.isSuffixed = true
+                    TRANSLATION.value = NUMERAL.value * NUMERAL.helperNumerals[type].multiplier
+                    TRANSLATION.isSuffixed = true
                 }
             }
 
-            if (!translation.isSuffixed) {
-                translation.value = NUMERAL.value
+            if (!TRANSLATION.isSuffixed) {
+                TRANSLATION.value = NUMERAL.value
             }
         }
     })
 
-    return translation
+    return TRANSLATION
 }
 
 /**
