@@ -1,6 +1,6 @@
 
-const numeralService = require('./numeralService.js')
-const utils = require('./utils.js')
+import * as numeralService from './numeralService.js'
+import * as utils from './utils.js'
 
 let testCount = 0
 let passedCount = 0

@@ -1,0 +1,14 @@
+{
+    "name": "roman-numerals-converter",
+    "version": "1.0.0",
+    "description": "Experiment in deeply fragmented functional programming",
+    "main": "start.js",
+    "scripts": {
+      "test": "node ./tests.js",
+      "start": "node ./start.js"
+    },
+    "author": "Generalu Stelaru",
+    "license": "ISC",
+    "type": "module"
+  }
+  

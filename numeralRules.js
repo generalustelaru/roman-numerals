@@ -2,7 +2,7 @@
 /**
  * Array of objects containing the Roman Numeral, its decimal value, and the helper numerals, if any.
  */
-const NUMERALS = [
+export const NUMERALS = [
     {
         numeral: 'M',
         value: 1000,
@@ -63,7 +63,7 @@ const NUMERALS = [
  * Array of objects containing the number of units, how many times they're repeated in the Roman Numeral system,
  * their associated helper numeral, and if it's placed before or after the current numeral.
  */
-const DIGITS = [
+export const DIGITS = [
     {
         digits: 1,
         repetitions: 1,
@@ -110,9 +110,3 @@ const DIGITS = [
         helperNumeral: { type: 'ten', isBefore: false }
     },
 ]
-
-
-module.exports = {
-    DIGITS,
-    NUMERALS,
-}

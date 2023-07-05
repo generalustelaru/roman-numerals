@@ -1,13 +1,13 @@
 
-const MAX_DECIMAL_VALUE = 3999
-const ILLEGAL_ROMAN_NUMERAL_VALUE = 'MMMM'
-const VALID_ROMAN_NUMERALS = new RegExp(/^[M,D,C,L,X,V,I]+$/g)
-const RANGE_ERROR = 'Cannot convert values greater than 3999.'
-const VALUE_ERROR = 'Invalid value.'
-const ESCAPE_INPUTS = ['q', 'Q']
-const HELP_INPUTS = ['h', 'H']
+export const MAX_DECIMAL_VALUE = 3999
+export const ILLEGAL_ROMAN_NUMERAL_VALUE = 'MMMM'
+export const VALID_ROMAN_NUMERALS = new RegExp(/^[M,D,C,L,X,V,I]+$/g)
+export const RANGE_ERROR = 'Cannot convert values greater than 3999.'
+export const VALUE_ERROR = 'Invalid value.'
+export const ESCAPE_INPUTS = ['q', 'Q']
+export const HELP_INPUTS = ['h', 'H']
 
-function styleInput(input) {
+export function styleInput(input) {
 
     const number = parseInt(input)
 
@@ -19,7 +19,7 @@ function styleInput(input) {
     return `\x1b[93m${input.toUpperCase()}\x1b[0m`
 }
 
-function styleOutput(output) {
+export function styleOutput(output) {
 
     if (output === RANGE_ERROR || output === VALUE_ERROR) {
 
@@ -29,7 +29,7 @@ function styleOutput(output) {
     return `\x1b[92m${output}\x1b[0m\n`
 }
 
-function getHelpText() {
+export function getHelpText() {
 
     const helpText = [
         '\n\x1b[93m1\x1b[0m-\x1b[93m3999\x1b[0m -> Get Roman numeral equivalent\n',
@@ -41,12 +41,12 @@ function getHelpText() {
     return helpText.reduce((acc, line) => acc + line)
 }
 
-function getPrompt(showIntro = true) {
+export function getPrompt(showIntro = true) {
 
     const prompt = ': '
     const introText = [
         '\n\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n',
-        '     -Functional Edition-\n',
+        '     -export functional Edition-\n',
         '\n TIP: type \x1b[93mh\x1b[0m for help.\n',
         `\n${prompt}`
     ]
@@ -57,18 +57,4 @@ function getPrompt(showIntro = true) {
     }
 
     return prompt
-}
-
-module.exports = {
-    MAX_DECIMAL_VALUE,
-    ILLEGAL_ROMAN_NUMERAL_VALUE,
-    VALID_ROMAN_NUMERALS,
-    RANGE_ERROR,
-    VALUE_ERROR,
-    ESCAPE_INPUTS,
-    HELP_INPUTS,
-    styleInput,
-    styleOutput,
-    getHelpText,
-    getPrompt,
 }

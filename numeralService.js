@@ -2,16 +2,14 @@
  * @fileoverview Contains functions to convert Roman Numerals to decimal values and vice versa.
  */
 
-const utils = require('./utils.js')
-const rules = require('./numeralRules.js')
-
-const MAX_DECIMAL_VALUE = utils.MAX_DECIMAL_VALUE
-const ILLEGAL_ROMAN_NUMERAL_VALUE = utils.ILLEGAL_ROMAN_NUMERAL_VALUE
-const VALID_ROMAN_NUMERALS = utils.VALID_ROMAN_NUMERALS
-const RANGE_ERROR = utils.RANGE_ERROR
-const VALUE_ERROR = utils.VALUE_ERROR
-const DIGITS = rules.DIGITS
-const NUMERALS = rules.NUMERALS
+import { DIGITS, NUMERALS } from './numeralRules.js'
+import { 
+    MAX_DECIMAL_VALUE,
+    ILLEGAL_ROMAN_NUMERAL_VALUE,
+    VALID_ROMAN_NUMERALS,
+    RANGE_ERROR,
+    VALUE_ERROR 
+} from './utils.js'
 
 /**
  * Determines the return value of a regular input
@@ -20,7 +18,7 @@ const NUMERALS = rules.NUMERALS
  * @example ('14') : 'XIV'
  * @example ('XIVX') : 'Invalid value.'
  */
-function getConvertedValue(input) {
+export function getConvertedValue(input) {
 
     const toDecimalResult = romanToDecimal(input)
     const toRomanResult = decimalToRoman(input)
@@ -47,9 +45,9 @@ function getConvertedValue(input) {
  * Converts a Roman Numeral to a number
  * @example ('XIV') : 14
  */
-function romanToDecimal(input) {
+export function romanToDecimal(input) {
 
-    romanNumerals = input.toUpperCase()
+    const romanNumerals = input.toUpperCase()
 
     if (!romanNumerals.match(VALID_ROMAN_NUMERALS)) {
 
@@ -95,7 +93,7 @@ function romanToDecimal(input) {
  * 
  * @example (14) : 'XIV'
  */
-function decimalToRoman(input) {
+export function decimalToRoman(input) {
 
     const decimalNumber = parseInt(input)
 
@@ -145,13 +143,15 @@ function composeNumerals (NUMERAL, repeatedNumeral, DIGIT) {
     let composedNumerals = ''
 
     if (DIGIT.helperNumeral) {
-        const selectedHelperNumeral = NUMERAL.helperNumerals[DIGIT.helperNumeral.type].numeral
+        const soughtType = DIGIT.helperNumeral.type
+        const validNumerals = NUMERAL.helperNumerals
+        const helperNumeral = validNumerals[soughtType].numeral
 
         if (DIGIT.helperNumeral.isBefore) {
-            composedNumerals += selectedHelperNumeral + repeatedNumeral
+            composedNumerals += helperNumeral + repeatedNumeral
 
         } else {
-            composedNumerals += repeatedNumeral + selectedHelperNumeral
+            composedNumerals += repeatedNumeral + helperNumeral
         }
     } else {
         composedNumerals += repeatedNumeral
@@ -205,10 +205,4 @@ function repeatNumeral (numeral, repetitions) {
     }
 
     return numerals
-}
-
-module.exports = {
-    decimalToRoman: decimalToRoman,
-    romanToDecimal: romanToDecimal,
-    getConvertedValue: getConvertedValue,
 }
