@@ -1,4 +1,5 @@
 import * as utils from './utils.js'
+import { ESCAPE_INPUTS, HELP_INPUTS, RANGE_ERROR, VALUE_ERROR } from './constants.js'
 import { getConvertedValue } from './numeralService.js'
 
 import readline from 'readline'
@@ -7,8 +8,6 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
-const ESCAPE_INPUTS = utils.ESCAPE_INPUTS
-const HELP_INPUTS = utils.HELP_INPUTS
 /**
  * Requests input from the user and prints an ouput.
  */
@@ -22,10 +21,13 @@ function requestInput(showIntro = true) {
         }
 
         if (HELP_INPUTS.includes(input)) {
+
             console.info(utils.getHelpText())
         } else {
             const output = getConvertedValue(input)
-            console.info(`${utils.styleInput(input)} -> ${utils.styleOutput(output)}`)
+            const isError = output === RANGE_ERROR || output === VALUE_ERROR
+
+            console.info(`${utils.styleInput(input)} -> ${utils.styleOutput(output, isError)}`)
         }
         requestInput(false)
     })

@@ -1,12 +1,10 @@
 
-export const MAX_DECIMAL_VALUE = 3999
-export const ILLEGAL_ROMAN_NUMERAL_VALUE = 'MMMM'
-export const VALID_ROMAN_NUMERALS = new RegExp(/^[M,D,C,L,X,V,I]+$/g)
-export const RANGE_ERROR = 'Cannot convert values greater than 3999.'
-export const VALUE_ERROR = 'Invalid value.'
-export const ESCAPE_INPUTS = ['q', 'Q']
-export const HELP_INPUTS = ['h', 'H']
-
+/**
+ * Returns the input text, colorized and to uppercase.
+ * 
+ * @param {*} input 
+ * @returns string
+ */
 export function styleInput(input) {
 
     const number = parseInt(input)
@@ -19,9 +17,9 @@ export function styleInput(input) {
     return `\x1b[93m${input.toUpperCase()}\x1b[0m`
 }
 
-export function styleOutput(output) {
+export function styleOutput(output, IsError = false) {
 
-    if (output === RANGE_ERROR || output === VALUE_ERROR) {
+    if (IsError) {
 
         return `\x1b[91m${output}\x1b[0m\n`
     }
@@ -46,7 +44,7 @@ export function getPrompt(showIntro = true) {
     const prompt = ': '
     const introText = [
         '\n\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n',
-        '     -export functional Edition-\n',
+        '     -Functional Edition-\n',
         '\n TIP: type \x1b[93mh\x1b[0m for help.\n',
         `\n${prompt}`
     ]

@@ -1,3 +1,10 @@
+export const MAX_DECIMAL_VALUE = 3999
+export const ILLEGAL_ROMAN_NUMERAL_VALUE = 'MMMM'
+export const VALID_ROMAN_NUMERALS = new RegExp(/^[M,D,C,L,X,V,I]+$/g)
+export const RANGE_ERROR = 'Cannot convert values greater than 3999.'
+export const VALUE_ERROR = 'Invalid value.'
+export const ESCAPE_INPUTS = ['q', 'Q', 'escape', 'Escape', 'ESCAPE', 'quit', 'Quit', 'QUIT', 'exit', 'Exit', 'EXIT']
+export const HELP_INPUTS = ['h', 'H', 'help', 'Help', 'HELP']
 
 /**
  * Array of objects containing the Roman Numeral, its decimal value, and the helper numerals, if any.

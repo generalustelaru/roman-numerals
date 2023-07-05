@@ -2,14 +2,15 @@
  * @fileoverview Contains functions to convert Roman Numerals to decimal values and vice versa.
  */
 
-import { DIGITS, NUMERALS } from './numeralRules.js'
-import { 
+import {
+    DIGITS,
+    NUMERALS,
     MAX_DECIMAL_VALUE,
     ILLEGAL_ROMAN_NUMERAL_VALUE,
     VALID_ROMAN_NUMERALS,
     RANGE_ERROR,
     VALUE_ERROR 
-} from './utils.js'
+    } from './constants.js'
 
 /**
  * Determines the return value of a regular input

@@ -1,13 +1,11 @@
 
 import * as numeralService from './numeralService.js'
-import * as utils from './utils.js'
+import { RANGE_ERROR, VALUE_ERROR } from './constants.js'
 
 let testCount = 0
 let passedCount = 0
 let failedCount = 0
 
-const RANGE_ERROR = utils.RANGE_ERROR
-const VALUE_ERROR = utils.VALUE_ERROR
 const shouldPrintEachTest = true
 
 function test_getConvertedValue() {
