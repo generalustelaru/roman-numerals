@@ -57,23 +57,28 @@ function styleOutput(output) {
 }
 
 function getHelpText() {
-    const lines = [
+    const helpText = [
         '\n\x1b[93m1\x1b[0m-\x1b[93m3999\x1b[0m -> Get Roman numeral equivalent\n',
         '\x1b[93mI\x1b[0m-\x1b[93mMMMCMXCIX\x1b[0m -> Get decimal equivalent\n',
         '\x1b[93mq\x1b[0m -> Quit\n',
         '\x1b[93mh\x1b[0m -> Help\n',
     ]
 
-    return lines.reduce((message, line) => message + line)
+    return helpText.reduce((acc, line) => acc + line)
 }
 
 function getPrompt(showIntro = true) {
     const prompt = ': '
-    const introText = `\n\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n    --Enterprise Edition--\n\n TIP: type \x1b[93mh\x1b[0m for help.\n\n${prompt}`
+    const introText = [
+        '\n\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n',
+        '     -Functional Edition-\n',
+        '\n TIP: type \x1b[93mh\x1b[0m for help.\n',
+        `\n${prompt}`
+    ]
 
     if (showIntro) {
 
-        return introText
+        return introText.reduce((acc, line) => acc + line)
     }
 
     return prompt

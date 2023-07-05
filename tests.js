@@ -27,7 +27,7 @@ function test_getConvertedValue() {
         { input: '15', expected: 'XV' },
         { input: '16', expected: 'XVI' },
         { input: '17', expected: 'XVII' },
-        { input: '20', expected: 'XX' },
+        { input: '19', expected: 'XIX' },
         { input: '100', expected: 'C' },
         { input: '499', expected: 'CDXCIX' },
         { input: '500', expected: 'D' },
