@@ -1,5 +1,5 @@
 const utils = require('./utils.js')
-const numeralService = require('./numerals.js')
+const numeralService = require('./numeralService.js')
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout

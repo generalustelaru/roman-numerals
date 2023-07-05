@@ -1,5 +1,5 @@
 
-const numeralService = require('./numerals.js')
+const numeralService = require('./numeralService.js')
 const utils = require('./utils.js')
 
 let testCount = 0
