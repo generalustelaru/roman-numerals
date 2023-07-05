@@ -5,8 +5,8 @@ const readline = require('readline').createInterface({
     output: process.stdout
 })
 
-const ESCAPE_INPUTS = utils.getEscapeInputs()
-const HELP_INPUTS = utils.getHelpInputs()
+const ESCAPE_INPUTS = utils.ESCAPE_INPUTS
+const HELP_INPUTS = utils.HELP_INPUTS
 /**
  * Requests input from the user and prints an ouput.
  */

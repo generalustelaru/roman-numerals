@@ -7,34 +7,6 @@ const VALUE_ERROR = 'Invalid value.'
 const ESCAPE_INPUTS = ['q', 'Q']
 const HELP_INPUTS = ['h', 'H']
 
-function getMaxDecimalValue() {
-    return MAX_DECIMAL_VALUE
-}
-
-function getIllegalRomanNumeralValue() {
-    return ILLEGAL_ROMAN_NUMERAL_VALUE
-}
-
-function getValidRomanNumerals() {
-    return VALID_ROMAN_NUMERALS
-}
-
-function getRangeError() {
-    return RANGE_ERROR
-}
-
-function getValueError() {
-    return VALUE_ERROR
-}
-
-function getEscapeInputs() {
-    return ESCAPE_INPUTS
-}
-
-function getHelpInputs() {
-    return HELP_INPUTS
-}
-
 function styleInput(input) {
 
     const number = parseInt(input)
@@ -88,15 +60,15 @@ function getPrompt(showIntro = true) {
 }
 
 module.exports = {
-    getMaxDecimalValue,
-    getIllegalRomanNumeralValue,
-    getValidRomanNumerals,
-    getRangeError,
-    getValueError,
+    MAX_DECIMAL_VALUE,
+    ILLEGAL_ROMAN_NUMERAL_VALUE,
+    VALID_ROMAN_NUMERALS,
+    RANGE_ERROR,
+    VALUE_ERROR,
+    ESCAPE_INPUTS,
+    HELP_INPUTS,
     styleInput,
     styleOutput,
     getHelpText,
     getPrompt,
-    getEscapeInputs,
-    getHelpInputs,
 }

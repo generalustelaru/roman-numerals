@@ -59,11 +59,6 @@ const NUMERALS = [
     },
 ]
 
-function getNumerals() {
-
-    return NUMERALS
-}
-
 /**
  * Array of objects containing the number of units, how many times they're repeated in the Roman Numeral system,
  * their associated helper numeral, and if it's placed before or after the current numeral.
@@ -116,12 +111,8 @@ const DIGITS = [
     },
 ]
 
-function getDigits() {
-
-    return DIGITS
-}
 
 module.exports = {
-    getDigits: getDigits,
-    getNumerals: getNumerals,
+    DIGITS,
+    NUMERALS,
 }

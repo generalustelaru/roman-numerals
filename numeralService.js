@@ -5,13 +5,13 @@
 const utils = require('./utils.js')
 const rules = require('./numeralRules.js')
 
-const MAX_DECIMAL_VALUE = utils.getMaxDecimalValue()
-const ILLEGAL_ROMAN_NUMERAL_VALUE = utils.getIllegalRomanNumeralValue()
-const VALID_ROMAN_NUMERALS = utils.getValidRomanNumerals()
-const RANGE_ERROR = utils.getRangeError()
-const VALUE_ERROR = utils.getValueError()
-const DIGITS = rules.getDigits()
-const NUMERALS = rules.getNumerals()
+const MAX_DECIMAL_VALUE = utils.MAX_DECIMAL_VALUE
+const ILLEGAL_ROMAN_NUMERAL_VALUE = utils.ILLEGAL_ROMAN_NUMERAL_VALUE
+const VALID_ROMAN_NUMERALS = utils.VALID_ROMAN_NUMERALS
+const RANGE_ERROR = utils.RANGE_ERROR
+const VALUE_ERROR = utils.VALUE_ERROR
+const DIGITS = rules.DIGITS
+const NUMERALS = rules.NUMERALS
 
 /**
  * Determines the return value of a regular input

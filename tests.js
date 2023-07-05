@@ -6,8 +6,8 @@ let testCount = 0
 let passedCount = 0
 let failedCount = 0
 
-const RANGE_ERROR = utils.getRangeError()
-const VALUE_ERROR = utils.getValueError()
+const RANGE_ERROR = utils.RANGE_ERROR
+const VALUE_ERROR = utils.VALUE_ERROR
 const shouldPrintEachTest = true
 
 function test_getConvertedValue() {
