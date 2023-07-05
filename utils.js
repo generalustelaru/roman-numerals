@@ -36,6 +36,7 @@ function getHelpInputs() {
 }
 
 function styleInput(input) {
+
     const number = parseInt(input)
 
     if (number) {
@@ -57,6 +58,7 @@ function styleOutput(output) {
 }
 
 function getHelpText() {
+
     const helpText = [
         '\n\x1b[93m1\x1b[0m-\x1b[93m3999\x1b[0m -> Get Roman numeral equivalent\n',
         '\x1b[93mI\x1b[0m-\x1b[93mMMMCMXCIX\x1b[0m -> Get decimal equivalent\n',
@@ -68,6 +70,7 @@ function getHelpText() {
 }
 
 function getPrompt(showIntro = true) {
+
     const prompt = ': '
     const introText = [
         '\n\x1b[32m ## Roman Numeral Converter ##\x1b[0m\n',

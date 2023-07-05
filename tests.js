@@ -1,5 +1,5 @@
 
-const numerals = require('./numerals.js')
+const numeralService = require('./numerals.js')
 const utils = require('./utils.js')
 
 let testCount = 0
@@ -66,7 +66,7 @@ function test_getConvertedValue() {
     ]
     testCases.forEach(testCase => {
         testCount++
-        const result = numerals.getConvertedValue(testCase.input)
+        const result = numeralService.getConvertedValue(testCase.input, true)
         if (result === testCase.expected) {
             passedCount++
             if (shouldPrintEachTest)

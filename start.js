@@ -1,5 +1,5 @@
 const utils = require('./utils.js')
-const numerals = require('./numerals.js')
+const numeralService = require('./numerals.js')
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
@@ -22,7 +22,7 @@ function requestInput(showIntro = true) {
         if (HELP_INPUTS.includes(input)) {
             console.info(utils.getHelpText())
         } else {
-            const output = numerals.getConvertedValue(input)
+            const output = numeralService.getConvertedValue(input)
             console.info(`${utils.styleInput(input)} -> ${utils.styleOutput(output)}`)
         }
         requestInput(false)
