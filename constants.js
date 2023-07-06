@@ -1,5 +1,16 @@
+/**
+ * There is no 5000 in Roman Numerals, so the maximum value is 3999.
+ */
 export const MAX_DECIMAL_VALUE = 3999
+/**
+ * MMMM is the outer (invalid) edge of the Roman Numeral system.
+ */
 export const ILLEGAL_ROMAN_NUMERAL_VALUE = 'MMMM'
+/**
+ * Regex containing all valid Roman Numerals.
+ * 
+ * @example /^[M,D,C,L,X,V,I]+$/g
+ */
 export const VALID_ROMAN_NUMERALS = new RegExp(/^[M,D,C,L,X,V,I]+$/g)
 export const RANGE_ERROR = 'Cannot convert values greater than 3999.'
 export const VALUE_ERROR = 'Invalid value.'

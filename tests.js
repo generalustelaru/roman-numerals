@@ -8,7 +8,7 @@ let failedCount = 0
 
 const shouldPrintEachTest = true
 
-function test_getConvertedValue() {
+function test_processValue() {
     const testCases = [
         { input: '1', expected: 'I' },
         { input: '2', expected: 'II' },
@@ -64,7 +64,7 @@ function test_getConvertedValue() {
     ]
     testCases.forEach(testCase => {
         testCount++
-        const result = numeralService.getConvertedValue(testCase.input, true)
+        const result = numeralService.processValue(testCase.input, true)
         if (result === testCase.expected) {
             passedCount++
             if (shouldPrintEachTest)
@@ -77,7 +77,7 @@ function test_getConvertedValue() {
     })
 }
 
-test_getConvertedValue()
+test_processValue()
 
 console.log(`\x1b[93m${testCount}\x1b[0m tests run.`)
 console.log((failedCount === 0 ? `\x1b[92m${failedCount}\x1b[0m` : `\x1b[91m${failedCount}\x1b[0m`) + ' failed.')

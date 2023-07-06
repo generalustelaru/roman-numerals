@@ -17,6 +17,14 @@ export function styleInput(input) {
     return `\x1b[93m${input.toUpperCase()}\x1b[0m`
 }
 
+/**
+ * Returns the output text, colorized, to uppercase, and with a newline.
+ * 
+ * @param {*} output
+ * @param {boolean} IsError
+ * @returns string
+ * @example styleOutput('XIV') : '\x1b[92mXIV\x1b[0m\n'
+ */
 export function styleOutput(output, IsError = false) {
 
     if (IsError) {
@@ -27,6 +35,11 @@ export function styleOutput(output, IsError = false) {
     return `\x1b[92m${output}\x1b[0m\n`
 }
 
+/**
+ * Returns the help text.
+ * 
+ * @returns string
+ */
 export function getHelpText() {
 
     const helpText = [
@@ -39,6 +52,12 @@ export function getHelpText() {
     return helpText.reduce((acc, line) => acc + line)
 }
 
+/**
+ * Returns the prompt symbol and, optionally, the intro text.
+ * 
+ * @param {boolean} showIntro
+ * @returns string
+ */
 export function getPrompt(showIntro = true) {
 
     const prompt = ': '

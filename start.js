@@ -1,6 +1,6 @@
 import * as utils from './utils.js'
 import { ESCAPE_INPUTS, HELP_INPUTS, RANGE_ERROR, VALUE_ERROR } from './constants.js'
-import { getConvertedValue } from './numeralService.js'
+import { processValue } from './numeralService.js'
 
 import readline from 'readline'
 const rl = readline.createInterface({
@@ -24,7 +24,7 @@ function requestInput(showIntro = true) {
 
             console.info(utils.getHelpText())
         } else {
-            const output = getConvertedValue(input)
+            const output = processValue(input)
             const isError = output === RANGE_ERROR || output === VALUE_ERROR
 
             console.info(`${utils.styleInput(input)} -> ${utils.styleOutput(output, isError)}`)

@@ -13,13 +13,14 @@ import {
     } from './constants.js'
 
 /**
- * Determines the return value of a regular input
+ * Determines the numbering system (roman or decimal) and returns the converted value.
+ * 
  * @param {string} input
  * @example ('XIV') : '14'
  * @example ('14') : 'XIV'
  * @example ('XIVX') : 'Invalid value.'
  */
-export function getConvertedValue(input) {
+export function processValue(input) {
 
     const toDecimalResult = romanToDecimal(input)
     const toRomanResult = decimalToRoman(input)
@@ -43,7 +44,8 @@ export function getConvertedValue(input) {
 }
 
 /**
- * Converts a Roman Numeral to a number
+ * Converts a Roman Numeral number to a decimal number
+ * 
  * @example ('XIV') : 14
  */
 export function romanToDecimal(input) {
@@ -90,7 +92,7 @@ export function romanToDecimal(input) {
 }
 
 /**
- * Converts a number to Roman Numerals
+ * Converts a decimal number to Roman Numeral number
  * 
  * @example (14) : 'XIV'
  */
@@ -123,6 +125,15 @@ export function decimalToRoman(input) {
     return numeralString
 }
 
+/**
+ * Translates a single digit to a Roman Numeral and marks if the next numeral should be skipped.
+ * 
+ * @param {number} digit
+ * @param {object} NUMERAL
+ * @returns {object}
+ * @example (0, { numeral: 'M', value: 1000, isPowerOfTen: true, helperNumerals: null }) : { numerals: '', value: 0 }
+ * @example (4, { numeral: 'C', value: 100, isPowerOfTen: true, helperNumerals: {...} }) : { numerals: 'CD', value: 400 }
+ */
 function translateDigit (digit, NUMERAL) {
 
     const TRANSLATION = { numerals: '', value: 0 }
@@ -130,7 +141,7 @@ function translateDigit (digit, NUMERAL) {
 
         if (digit === DIGIT.digits) {
             const repeatedNumeral = repeatNumeral(NUMERAL.numeral, DIGIT.repetitions)
-            TRANSLATION.numerals = composeNumerals(NUMERAL, repeatedNumeral, DIGIT)
+            TRANSLATION.numerals = addHelperNumeral(NUMERAL, repeatedNumeral, DIGIT)
         }
     })
     TRANSLATION.value = digit * NUMERAL.value
@@ -138,8 +149,15 @@ function translateDigit (digit, NUMERAL) {
     return TRANSLATION
 }
 
-
-function composeNumerals (NUMERAL, repeatedNumeral, DIGIT) {
+/**
+ * Adds a helper numeral to the numeral string if needed.
+ * 
+ * @param {object} NUMERAL { numeral: 'C', value: 100, isPowerOfTen: true, helperNumerals: {...} }
+ * @param {string} repeatedNumeral
+ * @param {object} DIGIT { digits: 4, repetitions: 1, helperNumeral: { type: 'five', isBefore: true } }
+ * @example (NUMERAL, 'C', DIGIT) : 'CD'
+ */
+function addHelperNumeral (NUMERAL, repeatedNumeral, DIGIT) {
 
     let composedNumerals = ''
 
@@ -163,6 +181,7 @@ function composeNumerals (NUMERAL, repeatedNumeral, DIGIT) {
 
 /**
  * Translates a single numeral to a decimal value and marks if the next numeral numeral should be skipped.
+ * 
  * @param {string} numeral the numeral to translate
  * @param {string} nextNumeral the subsequent numeral in the array, which might be a helper numeral
  * @example ('I', 'V') : {value: 4, isSuffixed: true}
@@ -194,6 +213,7 @@ function translateNumeral (numeral, nextNumeral) {
 
 /**
  * Returns a string of the same repeated numeral
+ * 
  * @param {string} numeral 
  * @param {number} repetitions 
  * @returns {string}
