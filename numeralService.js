@@ -73,12 +73,12 @@ export function romanToDecimal(input) {
         if (shouldSkipNext) {
             shouldSkipNext = false    
         } else {
-            const result = translateNumeral(numeral, numeralArray[index + 1])
+            const RESULT = translateNumeral(numeral, numeralArray[index + 1])
             
-            if (result.isSuffixed) {
+            if (RESULT.isSuffixed) {
                 shouldSkipNext = true
             }
-            accumulator += result.value
+            accumulator += RESULT.value
         }
     })
 
