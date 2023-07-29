@@ -37,7 +37,7 @@ export const NUMERALS = [
         numeral: 'C',
         value: 100,
         isPowerOfTen: true,
-        helperNumerals: 
+        helperNumerals:
         {
             five: { numeral: 'D', multiplier: 4 },
             ten: { numeral: 'M', multiplier: 9 }

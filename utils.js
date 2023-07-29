@@ -2,7 +2,7 @@
 /**
  * Returns the input text, colorized and to uppercase.
  * 
- * @param {*} input 
+ * @param {*} input
  * @returns string
  */
 export function styleInput(input) {

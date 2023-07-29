@@ -9,7 +9,7 @@ import {
     ILLEGAL_ROMAN_NUMERAL_VALUE,
     VALID_ROMAN_NUMERALS,
     RANGE_ERROR,
-    VALUE_ERROR 
+    VALUE_ERROR,
     } from './constants.js'
 
 /**
@@ -71,12 +71,12 @@ export function romanToDecimal(input) {
     let accumulator = 0
     let shouldSkipNext = false
     numeralArray.forEach((numeral, index) => {
-        
+
         if (shouldSkipNext) {
-            shouldSkipNext = false    
+            shouldSkipNext = false
         } else {
             const RESULT = translateNumeral(numeral, numeralArray[index + 1])
-            
+
             if (RESULT.isSuffixed) {
                 shouldSkipNext = true
             }
@@ -113,7 +113,7 @@ export function decimalToRoman(input) {
     let reduceable = decimalNumber
     let numeralString = ''
     NUMERALS.forEach(NUMERAL => {
-    
+
         if (NUMERAL.isPowerOfTen) {
             const frontDigit = Math.floor(reduceable / NUMERAL.value)
             const TRANSLATION = translateDigit(frontDigit, NUMERAL)
@@ -214,8 +214,8 @@ function translateNumeral (numeral, nextNumeral) {
 /**
  * Returns a string of the same repeated numeral
  * 
- * @param {string} numeral 
- * @param {number} repetitions 
+ * @param {string} numeral
+ * @param {number} repetitions
  * @returns {string}
  * @example ('X', 3) : 'XXX'
  */
